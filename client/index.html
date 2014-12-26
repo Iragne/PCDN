@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>video.js HLS Plugin Example</title>
+
+  <link href="/js/videojs/video-js.css" rel="stylesheet">
+
+<script src="//www.chartjs.org/assets/Chart.min.js"></script>
+<script src="http://cdn.peerjs.com/0.3/peer.js"></script>
+<script src="/js/videojs/video.dev.js"></script>
+<script src="/js/videojs-media-sources.js"></script>
+<script src="/js/videojs.hls.orig.js"></script>
+<script src="/js/apiCDNP2P.js"></script>
+<script>
+  apiCDNP2P({host:"peerjs.jairagne.ovh",port:"80",key: 'peerjs',debug:3});
+</script>
+<!-- <script src="/js/videojs.hls.orig.js"></script> -->
+
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .info {
+      background-color: #eee;
+      border: thin solid #333;
+      border-radius: 3px;
+      padding: 0 5px;
+      margin: 20px 0;
+    }
+  </style>
+
+</head>
+<body>
+  <div style="float:left" > 
+  <video id="video"
+         class="video-js vjs-default-skin"
+         height="300"
+         width="600"
+         controls>
+    <source
+       src="http://solutions.brightcove.com/jwhisenant/hls/apple/bipbop/bipbopall.m3u8"
+       type="application/x-mpegURL">
+  </video>
+</div>
+  <div style="float:left"><canvas id="updating-chart" width="500" height="300"></canvas></div>
+  <div style="float:left"><canvas id="hours" width="500" height="300"></canvas></div>
+    
+
+  <script>
+    videojs.options.flash.swf = '/js/videojs/video-js.swf';
+    // initialize the player
+    var player = videojs('video');
+
+    var canvas = document.getElementById('updating-chart'),
+    ctx = canvas.getContext('2d'),
+    startingData = {
+      labels: [0],
+      datasets: [
+          {
+              fillColor: "rgba(220,0,0,0.2)",
+              strokeColor: "rgba(220,220,220,1)",
+              pointColor: "rgba(220,220,220,1)",
+              pointStrokeColor: "#fff",
+              data: [0],
+              label:"CDN"
+          },
+          {
+              fillColor: "rgba(0,187,0,0.2)",
+              strokeColor: "rgba(0,187,0,1)",
+              pointColor: "rgba(0,187,0,1)",
+              pointStrokeColor: "#fff",
+              data: [0],
+              label:"P2P"
+          }
+      ]
+    };
+
+    var data = [
+    
+    {
+        value : 1,
+        color : "#2c9c69",
+        label:"P2P"
+    },
+    
+    {
+        value : 1,
+        color : "#c62f29",
+        label : "CDN"
+    }
+
+];
+var canvas = document.getElementById("hours");
+var ctxpie = canvas.getContext("2d");
+var pie = new Chart(ctxpie).Doughnut(data,{animationSteps: 1});
+    
+  // Reduce the animation steps for demo clarity.
+  var myLiveChart = new Chart(ctx).Line(startingData, {animationSteps: 15});
+  var numbers = 10;
+  for (var i = 0; i < numbers; i++) {
+    myLiveChart.addData([0, 0], i);
+  }
+  myLiveChart.removeData();
+  latestLabel = startingData.labels[numbers-1];
+
+  setInterval(function(){
+    // Add two random numbers for each dataset
+
+    myLiveChart.addData([(statP2P.cdn/1024/1024).toFixed(2), (statP2P.p2p/1024/1024).toFixed(2)], ++latestLabel);
+    // Remove the first point so we dont just add values forever
+    myLiveChart.removeData();
+    pie.segments[1].value = Math.floor(statP2P.cdn/1024);
+    pie.segments[0].value = Math.floor(statP2P.p2p/1024);
+    pie.update();
+  }, 5*1000);
+
+
+  </script>
+
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-58012638-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
