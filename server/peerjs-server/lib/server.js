@@ -21,6 +21,8 @@ app._initializeWSS = function(server) {
   this.get('/:key/url/:url/:leacher', function (req, res){
     var url = req.params.url;
     var leacher = req.params.leacher;
+    if (leacher == "null")
+      return res.sendStatus(200);
     if(!mymap[url])
       mymap[url] = [];
     var found = false;
