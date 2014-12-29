@@ -26,7 +26,11 @@ Client
 
 Copy past on your video page this code
 
-    enter code here
+    
+    <script src="/js/apiCDNP2P.js"></script>
+    <script>
+        apiCDNP2P({host:"peerjs.jairagne.ovh",port:"9000",key: 'peerjs',debug:3});
+    </script>
     
 Configuration:
 
