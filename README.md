@@ -12,8 +12,61 @@ I hope you found it interresting and feel free to contact me
 
 An example here [http://pcdn.jairagne.ovh](http://pcdn.jairagne.ovh)
 
+Riquirement 
+==========
+
+ - Videojs video player
+ - Compatible Browsers
+ - HLS video
+
+
+
+Client
+=====
+
+Copy past on your video page this code
+
+    enter code here
+    
+Configuration:
+
+ - host: host of the server
+ - port: port of the peerjs server
+ - key: api key of my peerjs server
+ - debug: Level of debug 0-3 see peerjs configuration 
+ - more: [Peerjs API configuration](http://peerjs.com/)
+
+Server
+=====
+
+**PCDN server**
+My PCDN server is free to use. feel free to make your test on it.
+For production mode, my advice is to run the server on you own.
+
+host: pcdn.jairagne.ovh
+port:9000
+key:peerjs
+
+**Your own PCDN server**
+
+    $cd server/peerjs-server
+    $npm install
+    $cd bin
+    $node peerjs --help
+
 
 Contact
-twitter:[adelskott](https://twitter.com/adelskott)
+======
+Twitter : [adelskott](https://twitter.com/adelskott)
 
+TODO
+====
+
+ - Landing page for inactive users
+ - Expose client API
+ - Refactor code
+ - Limit the client share to 5 
+ - Replace Peejs to use a proper server with faye
+ - Use a redis or Elasticsearch instead of memory storage
+ - Create a server dashboard
 
