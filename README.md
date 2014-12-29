@@ -57,7 +57,7 @@ key:peerjs
 
 Contact
 ======
-Twitter : [adelskott](https://twitter.com/adelskott)
+Twitter : [@adelskott](https://twitter.com/adelskott)
 
 TODO
 ====
