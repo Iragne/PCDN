@@ -49,10 +49,10 @@ key:peerjs
 
 **Your own PCDN server**
 
-    $cd server/peerjs-server
-    $npm install
-    $cd bin
-    $node peerjs --help
+    $ cd server/peerjs-server
+    $ npm install
+    $ cd bin
+    $ node peerjs --help
 
 
 Contact
