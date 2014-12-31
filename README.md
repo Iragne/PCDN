@@ -46,7 +46,7 @@ Server
 **PCDN server**
 
 My PCDN server is free to use. feel free to make your test on it.
-For production mode, my advice is to run the server on you own.
+For production mode, my advice is to do it by yourself.
 
 host: pcdn.jairagne.ovh
 port:9000
@@ -73,5 +73,5 @@ TODO
  - Limit the client share to 5 
  - Replace Peejs to use a proper server with faye
  - Use a redis or Elasticsearch instead of memory storage
- - Create a server dashboard
+ - Create a server dashboard for stats
 
