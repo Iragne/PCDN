@@ -47,6 +47,8 @@ Server
 
 My PCDN server is free to use. feel free to make your test on it.
 For production mode, my advice is to do it by yourself.
+Or use existing solution like Streemroot or Peer5 ....
+[good article here](http://blog.uppersideconferences.com/the-non-telecom-side-of-webrtc-data-channel/)
 
 host: pcdn.jairagne.ovh
 port:9000
@@ -74,4 +76,6 @@ TODO
  - Replace Peejs to use a proper server with faye
  - Use a redis or Elasticsearch instead of memory storage
  - Create a server dashboard for stats
+ - Automatic reconnection server
+ - Too many failure bybass P2P
 
