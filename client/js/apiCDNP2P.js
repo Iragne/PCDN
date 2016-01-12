@@ -226,7 +226,7 @@ var statP2P = {
         method: 'GET',
         timeout: 45 * 1000
       };
-      var checkurl = "http://"+videojs.APIP2P.options.host+"/peerjs/url/"+window.btoa(url);
+      var checkurl = "http://"+videojs.APIP2P.options.host+":"+videojs.APIP2P.options.port+"/peerjs/url/"+window.btoa(url);
       var request = new window.XMLHttpRequest();
       request.open(options.method, checkurl);
       request.onreadystatechange = function() {
@@ -258,7 +258,7 @@ var statP2P = {
         method: 'GET',
         timeout: 45 * 1000
       };
-      var checkurl = "http://"+videojs.APIP2P.options.host+"/peerjs/url/"+window.btoa(url)+"/"+id;
+      var checkurl = "http://"+videojs.APIP2P.options.host+":"+videojs.APIP2P.options.port+"/peerjs/url/"+window.btoa(url)+"/"+id;
       var request = new window.XMLHttpRequest();
       request.open(options.method, checkurl);
       request.onreadystatechange = function() {
